@@ -2,7 +2,7 @@
 
 Car::Car(Brand &b, Information &i)
 	:carBrand(b), carInfo(i) {
-	cout << "Car »ý¼º\n";
+	cout << "Car Å¥Ã½ÅºÅŸ\n";
 }
 \
 Car::Car(const Car& org) {
