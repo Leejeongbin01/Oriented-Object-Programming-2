@@ -1,5 +1,5 @@
-#include "car.h"
-#include <vector>
+#include "parent.h"
+
 
 
 int main() {
@@ -31,12 +31,9 @@ int main() {
 			cout << "Price : ";
 			cin >> price;
 
-			Brand btmp(&id,bn,mn);
-			Information itmp(year,kilo,&price);
-			Car c(btmp, itmp);
-	
+			Car c(&id, bn, mn, year, kilo, &price);
 			record.push_back(c);
-			
+
 		}
 		else if (input == 2) {
 			for (int i = 0; i < record.size(); i++) {
@@ -50,5 +47,5 @@ int main() {
 			cout << "1,2 or 3 select\n";
 		}
 	} while (true);
-	
+
 }
