@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+class Derived;
+
+class Base {
+protected:
+	int num1;
+public:
+	Base() :num1{ 10 } {}
+	void baseShow() {
+		cout << "Value of Number1 : " << num1 << endl;
+	}
+};
+
+class Derived : public Base {
+protected:
+	int num2;
+public:
+	Derived() :num2{ 20 } {}
+	void show() {
+		baseShow();
+		cout << "Value of NUmber2 : " << num2 << endl;
+	}
+	friend void swap(Derived* d);
+};
+
+void swap(Derived* d) {
+	int tmp = d->num1;
+	d->num1 = d->num2;
+	d->num2 = tmp;
+}
+
+int main() {
+	Derived d;
+	d.show();
+
+	swap(&d);
+
+	d.show();
+	return 0;
+}
