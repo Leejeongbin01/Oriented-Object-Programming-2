@@ -1,0 +1,36 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ifstream fin1("test1.txt", ios::in);
+	if (!fin1) {
+		cout << "no fin1";
+		return 0;
+	}
+
+	ifstream fin2("test2.txt", ios::in);
+	if (!fin2) {
+		cout << "no fin2";
+		return 0;
+	}
+
+	ofstream fout("test3.txt", ios::out );
+	if (!fout) {
+		cout << "no fout(1)";
+		return 0;
+	}
+	
+	int ch;
+	while ((ch = fin1.get()) != EOF) {
+		fout << (char)ch;
+	}
+	while ((ch = fin2.get()) != EOF) {
+		fout << (char)ch;
+	}
+	
+	fin1.close();
+	fin2.close();
+	fout.close();
+	return 0;
+}
