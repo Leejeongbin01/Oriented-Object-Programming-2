@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+class order {
+private:
+	int price;
+	string address;
+public:
+	order() = default;
+	order(int p, string addr)
+		:price(p), address(addr) {
+		cout << "An order : $" << price << " to " << address << " has been created." << endl;
+	}
+	virtual void changePrice(int newprice) {
+		cout << "The basic order class does not allow to change the price" << endl;
+	}
+	virtual void display() {
+		cout << "The basic order class does not allow to display the price" << endl;
+	}
+};
+
+class chickenOrder :public order {
+private:
+	int price;
+	string address;
+public:
+	chickenOrder() = default;
+	chickenOrder(int p, string addr)
+		:price(p), address(addr) {
+		cout << "A chicken order : $" << price << " to " << address << " has been created." << endl;
+	}
+	void changePrice(int newprice) override{
+		price = newprice;
+	}
+	void display() override{
+		cout << "Price : $ " << price << " Address : " << address << endl;
+	}
+};
+
+int main() {
+	order o1(10000, "Seoul");
+	chickenOrder co1(20000, "Inha Univ");
+	cout << endl;
+
+	o1.changePrice(15000);
+	co1.changePrice(25000);
+
+	o1.display();
+	co1.display();
+	return 0;
+}
