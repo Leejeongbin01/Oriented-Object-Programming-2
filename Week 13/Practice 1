@@ -1,0 +1,27 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ifstream fin("test.txt", ios::in);
+	if (!fin.is_open()) {
+		cout << "No open\n";
+		return 0;
+	}
+
+	int ch;
+	int n = 0;
+	int cnt = 0;
+	while ((ch = fin.get()) != EOF) {
+		cout << (char)ch;
+		n++;
+		if ((char)ch == '\n') {
+			cnt++;
+		}
+	}
+	cout << "The total number of characters is " << n << ".\n";
+	cout << "The number of lines : " << cnt;
+
+	fin.close();
+	return 0;
+}
