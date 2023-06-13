@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class Engine {
+private:
+	int cylinder;
+public:
+	Engine(int nc) {
+		cylinder = nc;
+	}
+	int getCylinder() {
+		return cylinder;
+	}
+	void start() {
+		cout << getCylinder() << " cylinder engine started " << endl;
+	}
+};
+
+class Car :private Engine {
+public:
+	Car(int nc = 4) :Engine(nc){}
+	void start() {
+		cout << "car with ";
+		Engine::start();
+		Engine::start();
+	}
+};
+
+int main() {
+	Car c(8);
+	c.start();
+	return 0;
+}
