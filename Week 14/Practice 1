@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void Checker() throw(char*) {
+	int ch;
+	int cnt = 0;
+	while ((ch = cin.get()) != EOF) {
+		if (ch == '@') {
+			cnt++;
+		}
+		if (ch == '\n') {
+			break;
+		}
+	}
+	if (cnt < 1) {
+		throw "Invalid Email Id!!!";
+	}
+}
+
+int main() {
+	try {
+		cout << "Enter Email Id : ";
+		Checker();
+	}
+	catch (const char* s) {
+		cout << "\nException Caught...\n";
+		cout << s;
+		return 0;
+	}
+	cout << "\nEmail Id is Valid\n";
+	return 0;
+}
