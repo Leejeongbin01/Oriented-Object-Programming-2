@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+class Practice1
+{
+private:
+	int memberVar1;
+	int memberVar2;
+	int memberVar3;
+	int* pointerVar = new int[3];
+public:
+	Practice1() : memberVar1{ 0 }, memberVar2{ 0 }, memberVar3{ 0 } {
+		pointerVar[0] = memberVar1;
+		pointerVar[1] = memberVar2;
+		pointerVar[2] = memberVar3;
+		cout << "I am a default constructor\n";
+	}
+	Practice1(int a, int b, int c) : memberVar1{ a }, memberVar2{ b }, memberVar3{ 3 } {
+		cout << "I am a parameter constructor\n";
+	}
+	Practice1(const Practice1& org) : memberVar1(org.memberVar1), memberVar2(org.memberVar2), memberVar3(org.memberVar3)
+	{
+		cout << "I am a copy constructor\n";
+		print();
+	}
+	~Practice1() {
+		delete[] pointerVar;
+		cout << "I am a destructor\n";
+	}
+	int getVal1() {
+		return memberVar1;
+	}
+	int getVal2() {
+		return memberVar2;
+	}
+	int getVal3() {
+		return memberVar3;
+	}
+	void print() {
+		cout << " Var 1 = " << getVal1() << " Var 2 = " << getVal2()
+			<< " Var 3 = " << getVal3() << "\n";
+	}
+};
+
+int main()
+{
+	Practice1 d;
+	Practice1 p(1, 2, 3);
+	Practice1 c = p;
+	c.print();
+
+	return 0;
+}
