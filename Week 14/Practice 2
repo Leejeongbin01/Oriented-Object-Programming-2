@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int sum;
+int intsum;
+
+template<class T>
+T* mem(int a) {
+	T* tmp = new T[a];
+	sum += sizeof(T) * a;
+	return tmp;
+}
+
+template<>
+int* mem(int a) {
+	int* tmp = new int[a];
+	sum += sizeof(int) * a;
+	intsum = sizeof(int) * a;
+	return tmp;
+}
+
+
+int main() {
+	char* cdata;
+	int* idata;
+	double* ddata;
+
+	cdata = mem<char>(2);
+	idata = mem<int>(2);
+	ddata = mem<double>(3);
+
+	cout << "global memeory footprint : " << sum << endl;
+	cout << "int memory footprint : " << intsum << endl;
+
+	delete[]cdata;
+	delete[]idata;
+	delete[]ddata;
+	
+	return 0;
+}
