@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+	int f(int x) {
+		cout << "f(int) in base: ";
+		return x + 3;
+	}
+	double f(double x) {
+		cout << "f(double) in base: ";
+		return x + 4.3;
+	}
+};
+
+class Derived : public Base {
+public:
+	int f(int x) {
+		cout << "f(int) in derived: ";
+		return x + 4;
+	}
+	double f(double x) {
+		cout << "f(double) in derived: ";
+		return x + 3.3;
+	}
+};
+
+int main() {
+	Derived* dp = new Derived;
+	cout << dp->f(3) << endl;
+	cout << dp->f(3.3) << endl;
+
+	Base* bp = dp;
+	cout << bp->f(4) << endl;
+	cout << bp->f(4.4) << endl;
+
+	delete dp;
+	return 0;
+}
